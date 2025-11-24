@@ -7,28 +7,17 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         :root {
+            /* Palette Baru */
+            --primary-bg: #3a0519; /* Deep Maroon - Pengganti #182134 */
+            --primary-bg-light: #520925; /* Lighter Maroon */
+            --accent-gold: #ebbf6c; /* Gold - Pengganti #25949f/#32b8c6 */
+            --accent-gold-dark: #c49b50;
+            --accent-gold-light: #f5d69e;
+            
             --color-white: rgba(255, 255, 255, 1);
-            --color-black: rgba(0, 0, 0, 1);
             --color-cream-50: rgba(252, 252, 249, 1);
-            --color-cream-100: rgba(255, 255, 253, 1);
-            --color-gray-200: rgba(245, 245, 245, 1);
-            --color-gray-300: rgba(167, 169, 169, 1);
-            --color-gray-400: rgba(119, 124, 124, 1);
-            --color-slate-500: rgba(98, 108, 113, 1);
-            --color-brown-600: rgba(94, 82, 64, 1);
-            --color-charcoal-700: rgba(31, 33, 33, 1);
-            --color-charcoal-800: rgba(38, 40, 40, 1);
-            --color-slate-900: rgba(19, 52, 59, 1);
-            --color-teal-300: rgba(50, 184, 198, 1);
-            --color-teal-400: rgba(45, 166, 178, 1);
-            --color-teal-500: rgba(33, 128, 141, 1);
-            --color-teal-600: rgba(29, 116, 128, 1);
-            --color-teal-700: rgba(26, 104, 115, 1);
-            --color-teal-800: rgba(41, 150, 161, 1);
-            --color-red-400: rgba(255, 84, 89, 1);
-            --color-red-500: rgba(192, 21, 47, 1);
-            --color-orange-400: rgba(230, 129, 97, 1);
-            --color-orange-500: rgba(168, 75, 47, 1);
+            --color-text-main: #fdf2f4; /* Text color optimized for maroon bg */
+            --color-text-muted: #dcc5cb;
         }
 
         * {
@@ -39,8 +28,8 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #0f172a;
-            color: #f1f5f9;
+            background: #250310; /* Very dark maroon for body bg */
+            color: var(--color-text-main);
             overflow-x: hidden;
         }
 
@@ -51,7 +40,7 @@
         }
 
         .slide {
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            background: linear-gradient(135deg, var(--primary-bg-light) 0%, var(--primary-bg) 100%);
             border-radius: 12px;
             padding: 60px;
             margin-bottom: 30px;
@@ -59,7 +48,7 @@
             display: flex;
             flex-direction: column;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(50, 184, 198, 0.2);
+            border: 1px solid rgba(235, 191, 108, 0.2); /* Gold border */
             position: relative;
         }
 
@@ -68,7 +57,7 @@
             bottom: 20px;
             right: 30px;
             font-size: 14px;
-            color: rgba(50, 184, 198, 0.6);
+            color: rgba(235, 191, 108, 0.6);
             font-weight: 500;
         }
 
@@ -76,7 +65,7 @@
             font-size: 48px;
             font-weight: 700;
             margin-bottom: 20px;
-            color: #32b8c6;
+            color: var(--accent-gold);
             text-align: center;
         }
 
@@ -84,8 +73,8 @@
             font-size: 32px;
             font-weight: 600;
             margin-bottom: 30px;
-            color: #32b8c6;
-            border-bottom: 3px solid #32b8c6;
+            color: var(--accent-gold);
+            border-bottom: 3px solid var(--accent-gold);
             padding-bottom: 15px;
         }
 
@@ -93,19 +82,19 @@
             font-size: 24px;
             font-weight: 600;
             margin-bottom: 15px;
-            color: #38bdf8;
+            color: var(--accent-gold-light);
         }
 
         .subtitle {
             font-size: 24px;
-            color: #94a3b8;
+            color: var(--color-text-muted);
             text-align: center;
             margin-bottom: 10px;
         }
 
         .tagline {
             font-size: 18px;
-            color: #64748b;
+            color: #bfa5aa;
             text-align: center;
             margin-top: 20px;
             font-style: italic;
@@ -114,22 +103,22 @@
         .cover-slide {
             justify-content: center;
             align-items: center;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            background: linear-gradient(135deg, #250310 0%, #3a0519 50%, #250310 100%);
         }
 
         .logo-placeholder {
             width: 200px;
             height: 200px;
-            background: linear-gradient(135deg, #32b8c6 0%, #2da6b2 100%);
+            background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-dark) 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 36px;
             font-weight: 700;
-            color: #0f172a;
+            color: #3a0519;
             margin: 40px auto;
-            box-shadow: 0 0 60px rgba(50, 184, 198, 0.4);
+            box-shadow: 0 0 60px rgba(235, 191, 108, 0.4);
         }
 
         .cards-container {
@@ -140,8 +129,8 @@
         }
 
         .card {
-            background: rgba(30, 41, 59, 0.6);
-            border: 1px solid rgba(50, 184, 198, 0.3);
+            background: rgba(82, 9, 37, 0.6); /* Lighter maroon transparent */
+            border: 1px solid rgba(235, 191, 108, 0.3);
             border-radius: 12px;
             padding: 25px;
             transition: all 0.3s ease;
@@ -149,33 +138,33 @@
 
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(50, 184, 198, 0.3);
-            border-color: #32b8c6;
+            box-shadow: 0 10px 30px rgba(235, 191, 108, 0.3);
+            border-color: var(--accent-gold);
         }
 
         .card-title {
             font-size: 18px;
             font-weight: 600;
-            color: #32b8c6;
+            color: var(--accent-gold);
             margin-bottom: 10px;
         }
 
         .card-value {
             font-size: 32px;
             font-weight: 700;
-            color: #f1f5f9;
+            color: var(--color-text-main);
             margin-bottom: 5px;
         }
 
         .card-description {
             font-size: 14px;
-            color: #94a3b8;
+            color: var(--color-text-muted);
             line-height: 1.5;
         }
 
         .highlight-box {
-            background: rgba(50, 184, 198, 0.1);
-            border-left: 4px solid #32b8c6;
+            background: rgba(235, 191, 108, 0.1);
+            border-left: 4px solid var(--accent-gold);
             padding: 20px;
             margin: 20px 0;
             border-radius: 8px;
@@ -198,7 +187,7 @@
             content: "✓";
             position: absolute;
             left: 0;
-            color: #32b8c6;
+            color: var(--accent-gold);
             font-weight: 700;
         }
 
@@ -210,22 +199,22 @@
         }
 
         th {
-            background: rgba(50, 184, 198, 0.2);
-            color: #32b8c6;
+            background: rgba(235, 191, 108, 0.2);
+            color: var(--accent-gold);
             padding: 15px;
             text-align: left;
             font-weight: 600;
-            border-bottom: 2px solid #32b8c6;
+            border-bottom: 2px solid var(--accent-gold);
         }
 
         td {
             padding: 15px;
-            border-bottom: 1px solid rgba(50, 184, 198, 0.2);
-            color: #f1f5f9;
+            border-bottom: 1px solid rgba(235, 191, 108, 0.2);
+            color: var(--color-text-main);
         }
 
         tr:hover {
-            background: rgba(50, 184, 198, 0.05);
+            background: rgba(235, 191, 108, 0.05);
         }
 
         .badge {
@@ -250,9 +239,9 @@
         }
 
         .badge-very-high {
-            background: rgba(50, 184, 198, 0.2);
-            color: #32b8c6;
-            border: 1px solid #32b8c6;
+            background: rgba(235, 191, 108, 0.2);
+            color: var(--accent-gold);
+            border: 1px solid var(--accent-gold);
         }
 
         .pillar-grid {
@@ -263,8 +252,8 @@
         }
 
         .pillar-card {
-            background: rgba(30, 41, 59, 0.6);
-            border: 2px solid rgba(50, 184, 198, 0.3);
+            background: rgba(82, 9, 37, 0.6);
+            border: 2px solid rgba(235, 191, 108, 0.3);
             border-radius: 12px;
             padding: 25px;
             text-align: center;
@@ -272,9 +261,9 @@
         }
 
         .pillar-card:hover {
-            border-color: #32b8c6;
+            border-color: var(--accent-gold);
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(50, 184, 198, 0.3);
+            box-shadow: 0 10px 30px rgba(235, 191, 108, 0.3);
         }
 
         .pillar-icon {
@@ -285,13 +274,13 @@
         .pillar-title {
             font-size: 18px;
             font-weight: 600;
-            color: #32b8c6;
+            color: var(--accent-gold);
             margin-bottom: 10px;
         }
 
         .pillar-desc {
             font-size: 14px;
-            color: #94a3b8;
+            color: var(--color-text-muted);
             line-height: 1.5;
         }
 
@@ -299,7 +288,7 @@
             position: relative;
             height: 400px;
             margin: 30px 0;
-            background: rgba(30, 41, 59, 0.4);
+            background: rgba(82, 9, 37, 0.4);
             border-radius: 12px;
             padding: 20px;
         }
@@ -319,8 +308,8 @@
         }
 
         .metric-box {
-            background: rgba(30, 41, 59, 0.6);
-            border: 1px solid rgba(50, 184, 198, 0.3);
+            background: rgba(82, 9, 37, 0.6);
+            border: 1px solid rgba(235, 191, 108, 0.3);
             border-radius: 12px;
             padding: 20px;
             text-align: center;
@@ -328,14 +317,14 @@
 
         .metric-label {
             font-size: 14px;
-            color: #94a3b8;
+            color: var(--color-text-muted);
             margin-bottom: 8px;
         }
 
         .metric-value {
             font-size: 28px;
             font-weight: 700;
-            color: #32b8c6;
+            color: var(--accent-gold);
         }
 
         .phase-timeline {
@@ -346,15 +335,15 @@
         }
 
         .phase-item {
-            background: rgba(30, 41, 59, 0.6);
-            border-left: 4px solid #32b8c6;
+            background: rgba(82, 9, 37, 0.6);
+            border-left: 4px solid var(--accent-gold);
             border-radius: 8px;
             padding: 20px;
             transition: all 0.3s ease;
         }
 
         .phase-item:hover {
-            background: rgba(50, 184, 198, 0.1);
+            background: rgba(235, 191, 108, 0.1);
             transform: translateX(10px);
         }
 
@@ -368,13 +357,13 @@
         .phase-name {
             font-size: 20px;
             font-weight: 600;
-            color: #32b8c6;
+            color: var(--accent-gold);
         }
 
         .phase-duration {
             font-size: 14px;
-            color: #94a3b8;
-            background: rgba(50, 184, 198, 0.2);
+            color: var(--color-text-muted);
+            background: rgba(235, 191, 108, 0.2);
             padding: 5px 15px;
             border-radius: 20px;
         }
@@ -386,16 +375,16 @@
 
         .phase-activities li {
             padding: 5px 0;
-            color: #cbd5e1;
+            color: var(--color-text-muted);
             font-size: 14px;
         }
 
         .phase-target {
             margin-top: 10px;
             padding-top: 10px;
-            border-top: 1px solid rgba(50, 184, 198, 0.2);
+            border-top: 1px solid rgba(235, 191, 108, 0.2);
             font-size: 14px;
-            color: #32b8c6;
+            color: var(--accent-gold);
             font-weight: 600;
         }
 
@@ -411,7 +400,7 @@
         }
 
         .risk-card {
-            background: rgba(30, 41, 59, 0.6);
+            background: rgba(82, 9, 37, 0.6);
             border: 1px solid rgba(255, 84, 89, 0.3);
             border-radius: 12px;
             padding: 20px;
@@ -426,13 +415,13 @@
 
         .risk-solution {
             font-size: 14px;
-            color: #cbd5e1;
+            color: var(--color-text-muted);
             line-height: 1.6;
         }
 
         .risk-solution:before {
             content: "→ ";
-            color: #32b8c6;
+            color: var(--accent-gold);
             font-weight: 700;
         }
 
@@ -441,7 +430,7 @@
         }
 
         .kpi-category {
-            background: rgba(30, 41, 59, 0.4);
+            background: rgba(82, 9, 37, 0.4);
             border-radius: 12px;
             padding: 20px;
             margin-bottom: 20px;
@@ -450,7 +439,7 @@
         .kpi-category-title {
             font-size: 20px;
             font-weight: 600;
-            color: #32b8c6;
+            color: var(--accent-gold);
             margin-bottom: 15px;
         }
 
@@ -463,23 +452,23 @@
             display: flex;
             justify-content: space-between;
             padding: 10px 0;
-            border-bottom: 1px solid rgba(50, 184, 198, 0.1);
+            border-bottom: 1px solid rgba(235, 191, 108, 0.1);
         }
 
         .kpi-metric {
             font-size: 15px;
-            color: #cbd5e1;
+            color: var(--color-text-muted);
         }
 
         .kpi-target {
             font-size: 15px;
             font-weight: 600;
-            color: #32b8c6;
+            color: var(--accent-gold);
         }
 
         .cta-box {
-            background: linear-gradient(135deg, rgba(50, 184, 198, 0.2) 0%, rgba(50, 184, 198, 0.05) 100%);
-            border: 2px solid #32b8c6;
+            background: linear-gradient(135deg, rgba(235, 191, 108, 0.2) 0%, rgba(235, 191, 108, 0.05) 100%);
+            border: 2px solid var(--accent-gold);
             border-radius: 12px;
             padding: 30px;
             margin-top: 30px;
@@ -489,7 +478,7 @@
         .cta-title {
             font-size: 24px;
             font-weight: 600;
-            color: #32b8c6;
+            color: var(--accent-gold);
             margin-bottom: 20px;
         }
 
@@ -502,7 +491,7 @@
         .action-list li {
             padding: 10px 0;
             font-size: 16px;
-            color: #cbd5e1;
+            color: var(--color-text-muted);
         }
 
         .thank-you-slide {
@@ -514,7 +503,7 @@
         .contact-info {
             margin-top: 30px;
             font-size: 18px;
-            color: #94a3b8;
+            color: var(--color-text-muted);
         }
 
         @media print {
@@ -550,7 +539,6 @@
 </head>
 <body>
     <div class="presentation-container">
-        <!-- SLIDE 1: COVER -->
         <div class="slide cover-slide">
             <h1>STRATEGI PEMASARAN &amp; GROWTH PLANNING KOMPREHENSIF</h1>
             <div class="subtitle">Rehlatours.id - Umrah Cerdas, Hati Tenang</div>
@@ -559,11 +547,10 @@
             <div class="slide-number">1 / 18</div>
         </div>
 
-        <!-- SLIDE 2: EXECUTIVE SUMMARY -->
         <div class="slide">
             <h2>Executive Summary</h2>
             <div class="highlight-box">
-                <h3 style="color: #32b8c6; margin-bottom: 20px;">Key Highlights</h3>
+                <h3 style="color: var(--accent-gold); margin-bottom: 20px;">Key Highlights</h3>
                 <ul>
                     <li><strong>Market Opportunity:</strong> Industri umrah Indonesia bernilai Rp54 triliun dengan 1,4+ juta jamaah per tahun, namun masih sangat fragmented dengan low digital penetration</li>
                     <li><strong>Target Growth:</strong> Dari 7,500 jamaah (2026) mencapai 58,000 jamaah (2030) dengan revenue growth Rp225M → Rp2,146M dalam 5 tahun</li>
@@ -574,7 +561,6 @@
             <div class="slide-number">2 / 18</div>
         </div>
 
-        <!-- SLIDE 3: MARKET ANALYSIS -->
         <div class="slide">
             <h2>Analisis Pasar Umrah Indonesia: Massive Opportunity</h2>
             <div class="cards-container">
@@ -600,7 +586,7 @@
                 </div>
             </div>
             <div class="highlight-box" style="margin-top: 30px;">
-                <h3 style="color: #32b8c6; margin-bottom: 15px;">Peluang Strategis</h3>
+                <h3 style="color: var(--accent-gold); margin-bottom: 15px;">Peluang Strategis</h3>
                 <ul>
                     <li>Market masih sangat fragmented: 2000+ PPIU tanpa dominasi kuat</li>
                     <li>Low digital penetration: Mayoritas kompetitor masih traditional</li>
@@ -611,7 +597,6 @@
             <div class="slide-number">3 / 18</div>
         </div>
 
-        <!-- SLIDE 4: MARKET SEGMENTATION -->
         <div class="slide">
             <h2>6 Segmen Pasar Target Strategis</h2>
             <table>
@@ -672,7 +657,6 @@
             <div class="slide-number">4 / 18</div>
         </div>
 
-        <!-- SLIDE 5: UVP -->
         <div class="slide">
             <h2>Umrah Cerdas, Hati Tenang - 5 Pilar Diferensiasi</h2>
             <div class="pillar-grid">
@@ -705,7 +689,6 @@
             <div class="slide-number">5 / 18</div>
         </div>
 
-        <!-- SLIDE 6: FINANCIAL PROJECTIONS -->
         <div class="slide">
             <h2>5-Year Revenue &amp; Customer Growth Projection</h2>
             <div class="chart-container">
@@ -731,7 +714,6 @@
             <div class="slide-number">6 / 18</div>
         </div>
 
-        <!-- SLIDE 7: UNIT ECONOMICS -->
         <div class="slide">
             <h2>Healthy Unit Economics Profile</h2>
             <div class="two-column">
@@ -771,7 +753,7 @@
                 </div>
             </div>
             <div class="highlight-box" style="margin-top: 30px;">
-                <h3 style="color: #32b8c6; margin-bottom: 15px;">Key Financial Strengths</h3>
+                <h3 style="color: var(--accent-gold); margin-bottom: 15px;">Key Financial Strengths</h3>
                 <ul>
                     <li>Exceptional LTV:CAC ratio menunjukkan sustainable growth model</li>
                     <li>Quick breakeven (2-3 bulan) minimizes risk exposure</li>
@@ -781,7 +763,6 @@
             <div class="slide-number">7 / 18</div>
         </div>
 
-        <!-- SLIDE 8: MARKET SHARE -->
         <div class="slide">
             <h2>Market Share Growth &amp; Competitive Positioning</h2>
             <div class="chart-container">
@@ -805,7 +786,7 @@
                 </div>
             </div>
             <div class="highlight-box" style="margin-top: 30px;">
-                <h3 style="color: #32b8c6; margin-bottom: 15px;">Competitive Positioning Strategy</h3>
+                <h3 style="color: var(--accent-gold); margin-bottom: 15px;">Competitive Positioning Strategy</h3>
                 <ul>
                     <li>Focus on niche dominance rather than broad market share</li>
                     <li>Target leadership dalam digital-savvy &amp; female traveler segments</li>
@@ -815,7 +796,6 @@
             <div class="slide-number">8 / 18</div>
         </div>
 
-        <!-- SLIDE 9: DIGITAL MARKETING -->
         <div class="slide">
             <h2>Digital Marketing Strategy (70% Budget Allocation)</h2>
             <div class="two-column">
@@ -848,7 +828,6 @@
             <div class="slide-number">9 / 18</div>
         </div>
 
-        <!-- SLIDE 10: OFFLINE MARKETING -->
         <div class="slide">
             <h2>Offline Marketing Strategy (30% Budget Allocation)</h2>
             <div class="cards-container">
@@ -879,7 +858,7 @@
                 </div>
             </div>
             <div class="highlight-box" style="margin-top: 30px;">
-                <h3 style="color: #32b8c6; margin-bottom: 15px;">Offline Strategy Rationale</h3>
+                <h3 style="color: var(--accent-gold); margin-bottom: 15px;">Offline Strategy Rationale</h3>
                 <ul>
                     <li>Complement digital with high-trust touchpoints (mosque, agents)</li>
                     <li>Leverage community networks for word-of-mouth amplification</li>
@@ -889,7 +868,6 @@
             <div class="slide-number">10 / 18</div>
         </div>
 
-        <!-- SLIDE 11: MARKETING BUDGET -->
         <div class="slide">
             <h2>Marketing Budget Allocation &amp; Timeline</h2>
             <div class="two-column">
@@ -906,7 +884,7 @@
                         <div class="card-description">Per bulan - aggressive growth phase</div>
                     </div>
                     <div class="highlight-box" style="margin-top: 30px;">
-                        <h3 style="color: #32b8c6; margin-bottom: 15px;">Investment Philosophy</h3>
+                        <h3 style="color: var(--accent-gold); margin-bottom: 15px;">Investment Philosophy</h3>
                         <ul style="font-size: 14px;">
                             <li>Start conservative untuk test &amp; learn</li>
                             <li>Scale budget setelah validation</li>
@@ -924,7 +902,6 @@
             <div class="slide-number">11 / 18</div>
         </div>
 
-        <!-- SLIDE 12: IMPLEMENTATION ROADMAP -->
         <div class="slide">
             <h2>Execution Roadmap: 4 Phases Strategis</h2>
             <div class="phase-timeline">
@@ -982,7 +959,6 @@
             <div class="slide-number">12 / 18</div>
         </div>
 
-        <!-- SLIDE 13: COMPETITIVE ADVANTAGES -->
         <div class="slide">
             <h2>Competitive Advantages vs Kompetitor Tradisional</h2>
             <div class="comparison-table">
@@ -990,7 +966,7 @@
                     <thead>
                         <tr>
                             <th>Dimensi</th>
-                            <th style="color: #32b8c6;">Rehlatours.id</th>
+                            <th style="color: var(--accent-gold);">Rehlatours.id</th>
                             <th>Kompetitor (Al Hijaz, Khazzanah, Multazam)</th>
                         </tr>
                     </thead>
@@ -998,33 +974,33 @@
                         <tr>
                             <td><strong>Booking Process</strong></td>
                             <td style="color: #4ade80;">✓ Digital-first, mobile app, real-time</td>
-                            <td style="color: #94a3b8;">✗ Traditional, offline, manual</td>
+                            <td style="color: var(--color-text-muted);">✗ Traditional, offline, manual</td>
                         </tr>
                         <tr>
                             <td><strong>Technology</strong></td>
                             <td style="color: #4ade80;">✓ Mobile app + real-time tracking</td>
-                            <td style="color: #94a3b8;">✗ No major competitors with this</td>
+                            <td style="color: var(--color-text-muted);">✗ No major competitors with this</td>
                         </tr>
                         <tr>
                             <td><strong>Market Focus</strong></td>
                             <td style="color: #4ade80;">✓ Niche specialization (female, corporate)</td>
-                            <td style="color: #94a3b8;">✗ Broad, undifferentiated positioning</td>
+                            <td style="color: var(--color-text-muted);">✗ Broad, undifferentiated positioning</td>
                         </tr>
                         <tr>
                             <td><strong>Female Travelers</strong></td>
                             <td style="color: #4ade80;">✓ Specialized female-only packages</td>
-                            <td style="color: #94a3b8;">✗ Underserved segment</td>
+                            <td style="color: var(--color-text-muted);">✗ Underserved segment</td>
                         </tr>
                         <tr>
                             <td><strong>Corporate Solutions</strong></td>
                             <td style="color: #4ade80;">✓ Dedicated B2B team &amp; packages</td>
-                            <td style="color: #94a3b8;">✗ Limited corporate offerings</td>
+                            <td style="color: var(--color-text-muted);">✗ Limited corporate offerings</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
             <div class="highlight-box" style="margin-top: 30px;">
-                <h3 style="color: #32b8c6; margin-bottom: 15px;">Sustainable Competitive Moats</h3>
+                <h3 style="color: var(--accent-gold); margin-bottom: 15px;">Sustainable Competitive Moats</h3>
                 <ul>
                     <li><strong>Technology Advantage:</strong> First-mover dalam mobile-first umrah platform</li>
                     <li><strong>Niche Leadership:</strong> Category ownership dalam female &amp; corporate segments</li>
@@ -1034,7 +1010,6 @@
             <div class="slide-number">13 / 18</div>
         </div>
 
-        <!-- SLIDE 14: RISK MITIGATION -->
         <div class="slide">
             <h2>Risk Mitigation Strategies</h2>
             <div class="risk-grid">
@@ -1058,7 +1033,7 @@
                 </div>
             </div>
             <div class="highlight-box" style="margin-top: 30px;">
-                <h3 style="color: #32b8c6; margin-bottom: 15px;">Risk Management Philosophy</h3>
+                <h3 style="color: var(--accent-gold); margin-bottom: 15px;">Risk Management Philosophy</h3>
                 <ul>
                     <li>Proactive risk identification &amp; mitigation rather than reactive</li>
                     <li>Build trust as competitive advantage - transparency as default</li>
@@ -1068,7 +1043,6 @@
             <div class="slide-number">14 / 18</div>
         </div>
 
-        <!-- SLIDE 15: KPIs -->
         <div class="slide">
             <h2>KPI Dashboard: Monitoring &amp; Success Metrics</h2>
             <div class="kpi-section">
@@ -1127,25 +1101,73 @@
             <div class="slide-number">15 / 18</div>
         </div>
 
-        <!-- SLIDE 16: POSITIONING MATRIX -->
         <div class="slide">
             <h2>Market Positioning: Digital Innovation vs Experience Quality</h2>
             <div class="chart-container" style="height: 450px;">
                 <canvas id="positioningChart"></canvas>
             </div>
             <div class="highlight-box">
-                <h3 style="color: #32b8c6; margin-bottom: 15px;">Strategic Positioning Statement</h3>
-                <p style="font-size: 16px; line-height: 1.8; color: #cbd5e1;">
-                    <strong style="color: #32b8c6;">Rehlatours.id</strong> memposisikan diri sebagai <strong>premium digital-first umrah provider</strong> yang mengkombinasikan <strong>technology innovation</strong> dengan <strong>high-touch personalized service</strong>, berbeda dari kompetitor tradisional yang masih manual dan kompetitor digital yang sacrifice quality untuk scale.
+                <h3 style="color: var(--accent-gold); margin-bottom: 15px;">Strategic Positioning Statement</h3>
+                <p style="font-size: 16px; line-height: 1.8; color: var(--color-text-muted);">
+                    <strong style="color: var(--accent-gold);">Rehlatours.id</strong> memposisikan diri sebagai <strong>premium digital-first umrah provider</strong> yang mengkombinasikan <strong>technology innovation</strong> dengan <strong>high-touch personalized service</strong>, berbeda dari kompetitor tradisional yang masih manual dan kompetitor digital yang sacrifice quality untuk scale.
                 </p>
             </div>
             <div class="slide-number">16 / 18</div>
         </div>
 
-        <!-- SLIDE 17: NEXT STEPS -->
         <div class="slide">
             <h2>Next Steps &amp; Implementation Timeline</h2>
-            <div class
+            <div class="cta-box">
+                <div class="cta-title">Immediate Action Items (Month 1-3)</div>
+                <ul class="action-list">
+                    <li><strong>✓ PPIU License:</strong> Initiate application process immediately - critical path item</li>
+                    <li><strong>✓ Team Building:</strong> Recruit core team (operations, marketing, customer service)</li>
+                    <li><strong>✓ Technology:</strong> Website development &amp; mobile app MVP</li>
+                    <li><strong>✓ Partnerships:</strong> Establish relationships dengan hotels, airlines, ground handlers</li>
+                </ul>
+            </div>
+            <div class="two-column" style="margin-top: 30px;">
+                <div class="card">
+                    <div class="card-title">Resource Requirements</div>
+                    <ul style="list-style: none; padding: 0; margin-top: 15px;">
+                        <li style="padding: 8px 0; color: var(--color-text-muted);">💰 Initial Capital: Rp500-750 juta</li>
+                        <li style="padding: 8px 0; color: var(--color-text-muted);">👥 Core Team: 8-12 people</li>
+                        <li style="padding: 8px 0; color: var(--color-text-muted);">📱 Technology Stack: Web + Mobile</li>
+                        <li style="padding: 8px 0; color: var(--color-text-muted);">🤝 Partner Network: 5-10 strategic</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-title">Success Metrics (Month 6)</div>
+                    <ul style="list-style: none; padding: 0; margin-top: 15px;">
+                        <li style="padding: 8px 0; color: var(--color-text-muted);">📋 PPIU approval secured</li>
+                        <li style="padding: 8px 0; color: var(--color-text-muted);">🎯 100-150 pilot customers</li>
+                        <li style="padding: 8px 0; color: var(--color-text-muted);">⭐ 4.5+ CSAT rating</li>
+                        <li style="padding: 8px 0; color: var(--color-text-muted);">💼 3-5 corporate partnerships</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="slide-number">17 / 18</div>
+        </div>
+
+        <div class="slide thank-you-slide">
+            <h1>Terima Kasih</h1>
+            <div class="logo-placeholder" style="width: 150px; height: 150px; font-size: 28px;">RT</div>
+            <div class="subtitle" style="font-size: 28px; margin-top: 20px;">Umrah Cerdas, Hati Tenang</div>
+            <div class="contact-info">
+                <p style="margin: 10px 0;">Rehlatours.id</p>
+                <p style="margin: 10px 0;">info@rehlatours.id</p>
+                <p style="margin: 10px 0;">www.rehlatours.id</p>
+            </div>
+            <div class="tagline" style="margin-top: 40px; font-size: 16px;">
+                "Membangun masa depan umrah Indonesia dengan technology, trust, dan heart"
+            </div>
+            <div class="slide-number">18 / 18</div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
 
 
 
