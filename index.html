@@ -116,7 +116,6 @@
     box-shadow: 0 0 60px rgba(235, 191, 108, 0.4);
   }
   
-  /* Additional styling with updated colors where #25949f or #182134 appeared */
   .chart-container {
     position: relative;
     height: 400px;
@@ -125,29 +124,30 @@
     border-radius: 12px;
     padding: 20px;
   }
-  /* ... You can continue updating any other relevant styles similarly */
 </style>
 </head>
 <body>
-  <div class="presentation-container">
-    <div class="slide cover-slide">
-      <h1>STRATEGI PEMASARAN & GROWTH PLANNING KOMPREHENSIF</h1>
-      <div class="subtitle">Rehlatours.id - Umrah Cerdas, Hati Tenang</div>
-      <div class="logo-placeholder">RT</div>
-      <div class="tagline">5-Year Strategic Roadmap untuk Penetrasi Pasar Umrah Indonesia</div>
-      <div class="slide-number">1 / 18</div>
-    </div>
+<div class="presentation-container">
 
-    <!-- Other slide content below with colors updated similarly -->
-
-    <!-- Chart canvases and other HTML remain the same, refer to your original code -->
+  <div class="slide cover-slide">
+    <h1>STRATEGI PEMASARAN & GROWTH PLANNING KOMPREHENSIF</h1>
+    <div class="subtitle">Rehlatours.id - Umrah Cerdas, Hati Tenang</div>
+    <div class="logo-placeholder">RT</div>
+    <div class="tagline">5-Year Strategic Roadmap untuk Penetrasi Pasar Umrah Indonesia</div>
+    <div class="slide-number">1 / 18</div>
   </div>
 
-<script>
-  // Your JavaScript code for charts can stay mostly the same,
-  // just update color codes for chart elements as needed like this:
+  <!-- Add your other 17 slides content here, keep original formatting and content -->
 
-  // Example: revenue chart updated color
+  <canvas id="revenueChart" class="chart-container"></canvas>
+  <canvas id="marketShareChart" class="chart-container"></canvas>
+  <canvas id="digitalBudgetChart" class="chart-container"></canvas>
+  <canvas id="budgetAllocationChart" class="chart-container"></canvas>
+  <canvas id="positioningChart" class="chart-container"></canvas>
+
+</div>
+
+<script>
   const revenueCtx = document.getElementById('revenueChart');
   if (revenueCtx) {
     new Chart(revenueCtx, {
@@ -158,8 +158,8 @@
           {
             label: 'Revenue (Rp Miliar)',
             data: [225, 558, 1056, 1575, 2146],
-            backgroundColor: 'rgba(235, 191, 108, 0.7)', // Updated from 'rgba(50, 184, 198, 0.7)'
-            borderColor: 'rgba(235, 191, 108, 1)', // Updated from 'rgba(50, 184, 198, 1)'
+            backgroundColor: 'rgba(235, 191, 108, 0.7)', // replaced #25949f
+            borderColor: 'rgba(235, 191, 108, 1)',
             borderWidth: 2,
             yAxisID: 'y',
           },
@@ -174,14 +174,420 @@
         ],
       },
       options: {
-        // options unchanged except colors updated accordingly similarly
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: {
+          mode: 'index',
+          intersect: false,
+        },
+        plugins: {
+          legend: {
+            labels: {
+              color: '#f1f5f9',
+              font: {
+                size: 14,
+              },
+            },
+          },
+          title: {
+            display: true,
+            text: 'Revenue & Customer Growth Trajectory',
+            color: '#ebbf6c', // replaced #25949f
+            font: {
+              size: 16,
+              weight: 'bold',
+            },
+          },
+        },
+        scales: {
+          x: {
+            ticks: {
+              color: '#94a3b8',
+            },
+            grid: {
+              color: 'rgba(235, 191, 108, 0.1)', // replaced #25949f
+            },
+          },
+          y: {
+            type: 'linear',
+            display: true,
+            position: 'left',
+            ticks: {
+              color: '#94a3b8',
+              callback: function(value) {
+                return 'Rp' + value + 'M';
+              },
+            },
+            grid: {
+              color: 'rgba(235, 191, 108, 0.1)',
+            },
+            title: {
+              display: true,
+              text: 'Revenue (Miliar Rupiah)',
+              color: '#ebbf6c',
+            },
+          },
+          y1: {
+            type: 'linear',
+            display: true,
+            position: 'right',
+            ticks: {
+              color: '#94a3b8',
+              callback: function(value) {
+                return value.toLocaleString();
+              },
+            },
+            grid: {
+              drawOnChartArea: false,
+            },
+            title: {
+              display: true,
+              text: 'Jumlah Jamaah',
+              color: 'rgba(56, 189, 248, 1)',
+            },
+          },
+        },
       },
     });
   }
 
-  // Repeat similar updates for other charts with color #25949f changed to #ebbf6c and #182134 to #3a0519
+  const marketShareCtx = document.getElementById('marketShareChart');
+  if (marketShareCtx) {
+    new Chart(marketShareCtx, {
+      type: 'line',
+      data: {
+        labels: ['Year 1 (2026)', 'Year 2 (2027)', 'Year 3 (2028)', 'Year 4 (2029)', 'Year 5 (2030)'],
+        datasets: [
+          {
+            label: 'Market Share (%)',
+            data: [0.5, 1.0, 1.9, 2.3, 2.7],
+            backgroundColor: 'rgba(235, 191, 108, 0.2)',
+            borderColor: 'rgba(235, 191, 108, 1)',
+            borderWidth: 3,
+            fill: true,
+            tension: 0.4,
+            pointRadius: 6,
+            pointBackgroundColor: 'rgba(235, 191, 108, 1)',
+            pointBorderColor: '#fff',
+            pointBorderWidth: 2,
+            pointHoverRadius: 8,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            labels: {
+              color: '#f1f5f9',
+              font: {
+                size: 14,
+              },
+            },
+          },
+          title: {
+            display: true,
+            text: 'Market Share Growth Path to Top 5',
+            color: '#ebbf6c',
+            font: {
+              size: 16,
+              weight: 'bold',
+            },
+          },
+        },
+        scales: {
+          x: {
+            ticks: {
+              color: '#94a3b8',
+            },
+            grid: {
+              color: 'rgba(235, 191, 108, 0.1)',
+            },
+          },
+          y: {
+            ticks: {
+              color: '#94a3b8',
+              callback: function(value) {
+                return value + '%';
+              },
+            },
+            grid: {
+              color: 'rgba(235, 191, 108, 0.1)',
+            },
+            title: {
+              display: true,
+              text: 'Market Share (%)',
+              color: '#ebbf6c',
+            },
+          },
+        },
+      },
+    });
+  }
+
+  const digitalBudgetCtx = document.getElementById('digitalBudgetChart');
+  if (digitalBudgetCtx) {
+    new Chart(digitalBudgetCtx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Google Ads', 'Facebook/Instagram', 'YouTube', 'Influencer', 'Content'],
+        datasets: [
+          {
+            data: [40, 35, 10, 10, 5],
+            backgroundColor: [
+              'rgba(235, 191, 108, 0.8)',
+              'rgba(56, 189, 248, 0.8)',
+              'rgba(96, 165, 250, 0.8)',
+              'rgba(147, 197, 253, 0.8)',
+              'rgba(191, 219, 254, 0.8)',
+            ],
+            borderColor: [
+              'rgba(235, 191, 108, 1)',
+              'rgba(56, 189, 248, 1)',
+              'rgba(96, 165, 250, 1)',
+              'rgba(147, 197, 253, 1)',
+              'rgba(191, 219, 254, 1)',
+            ],
+            borderWidth: 2,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: {
+              color: '#f1f5f9',
+              font: {
+                size: 13,
+              },
+              padding: 15,
+            },
+          },
+          title: {
+            display: true,
+            text: 'Digital Channel Budget Split',
+            color: '#ebbf6c',
+            font: {
+              size: 16,
+              weight: 'bold',
+            },
+          },
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                return context.label + ': ' + context.parsed + '%';
+              },
+            },
+          },
+        },
+      },
+    });
+  }
+
+  const budgetAllocationCtx = document.getElementById('budgetAllocationChart');
+  if (budgetAllocationCtx) {
+    new Chart(budgetAllocationCtx, {
+      type: 'pie',
+      data: {
+        labels: ['Google', 'Facebook/IG', 'Influencer', 'Content', 'Events', 'PR'],
+        datasets: [
+          {
+            data: [40, 35, 10, 8, 4, 3],
+            backgroundColor: [
+              'rgba(235, 191, 108, 0.8)',
+              'rgba(56, 189, 248, 0.8)',
+              'rgba(96, 165, 250, 0.8)',
+              'rgba(147, 197, 253, 0.8)',
+              'rgba(191, 219, 254, 0.8)',
+              'rgba(224, 242, 254, 0.8)',
+            ],
+            borderColor: [
+              'rgba(235, 191, 108, 1)',
+              'rgba(56, 189, 248, 1)',
+              'rgba(96, 165, 250, 1)',
+              'rgba(147, 197, 253, 1)',
+              'rgba(191, 219, 254, 1)',
+              'rgba(224, 242, 254, 1)',
+            ],
+            borderWidth: 2,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: {
+              color: '#f1f5f9',
+              font: {
+                size: 12,
+              },
+              padding: 10,
+            },
+          },
+          title: {
+            display: true,
+            text: 'Overall Marketing Budget Distribution',
+            color: '#ebbf6c',
+            font: {
+              size: 14,
+              weight: 'bold',
+            },
+          },
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                return context.label + ': ' + context.parsed + '%';
+              },
+            },
+          },
+        },
+      },
+    });
+  }
+
+  const positioningCtx = document.getElementById('positioningChart');
+  if (positioningCtx) {
+    new Chart(positioningCtx, {
+      type: 'scatter',
+      data: {
+        datasets: [
+          {
+            label: 'Rehlatours.id',
+            data: [{ x: 85, y: 85 }],
+            backgroundColor: 'rgba(235, 191, 108, 0.8)',
+            borderColor: 'rgba(235, 191, 108, 1)',
+            borderWidth: 3,
+            pointRadius: 15,
+            pointHoverRadius: 18,
+          },
+          {
+            label: 'Al Hijaz',
+            data: [{ x: 40, y: 70 }],
+            backgroundColor: 'rgba(148, 163, 184, 0.6)',
+            borderColor: 'rgba(148, 163, 184, 1)',
+            borderWidth: 2,
+            pointRadius: 12,
+            pointHoverRadius: 15,
+          },
+          {
+            label: 'Khazzanah',
+            data: [{ x: 35, y: 65 }],
+            backgroundColor: 'rgba(148, 163, 184, 0.6)',
+            borderColor: 'rgba(148, 163, 184, 1)',
+            borderWidth: 2,
+            pointRadius: 12,
+            pointHoverRadius: 15,
+          },
+          {
+            label: 'Multazam',
+            data: [{ x: 45, y: 60 }],
+            backgroundColor: 'rgba(148, 163, 184, 0.6)',
+            borderColor: 'rgba(148, 163, 184, 1)',
+            borderWidth: 2,
+            pointRadius: 12,
+            pointHoverRadius: 15,
+          },
+          {
+            label: 'Digital Startups',
+            data: [{ x: 75, y: 50 }],
+            backgroundColor: 'rgba(58, 5, 25, 0.6)',  /* replaced #182134 with #3a0519 */
+            borderColor: 'rgba(58, 5, 25, 1)',
+            borderWidth: 2,
+            pointRadius: 10,
+            pointHoverRadius: 13,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            labels: {
+              color: '#f1f5f9',
+              font: {
+                size: 13,
+              },
+              usePointStyle: true,
+            },
+          },
+          title: {
+            display: true,
+            text: 'Competitive Positioning Matrix',
+            color: '#ebbf6c',
+            font: {
+              size: 16,
+              weight: 'bold',
+            },
+          },
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                return context.dataset.label + ': Digital Innovation ' + context.parsed.x + ', Experience Quality ' + context.parsed.y;
+              },
+            },
+          },
+        },
+        scales: {
+          x: {
+            title: {
+              display: true,
+              text: 'Digital Innovation →',
+              color: '#ebbf6c',
+              font: {
+                size: 14,
+                weight: 'bold',
+              },
+            },
+            min: 0,
+            max: 100,
+            ticks: {
+              color: '#94a3b8',
+              stepSize: 20,
+            },
+            grid: {
+              color: 'rgba(235, 191, 108, 0.1)',
+            },
+          },
+          y: {
+            title: {
+              display: true,
+              text: 'Experience Quality →',
+              color: '#ebbf6c',
+              font: {
+                size: 14,
+                weight: 'bold',
+              },
+            },
+            min: 0,
+            max: 100,
+            ticks: {
+              color: '#94a3b8',
+              stepSize: 20,
+            },
+            grid: {
+              color: 'rgba(235, 191, 108, 0.1)',
+            },
+          },
+        },
+      },
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    console.log('Rehlatours.id Presentation Loaded Successfully');
+    console.log('Total Slides: 18');
+  });
 </script>
 
 </body>
 </html>
+
 
