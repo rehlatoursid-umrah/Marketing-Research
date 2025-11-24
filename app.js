@@ -1,258 +1,873 @@
-// app.js - Simpan file ini di folder yang sama dengan index.html
+// Financial Projections Chart
+
+const revenueCtx = document.getElementById('revenueChart');
+
+if (revenueCtx) {
+
+    new Chart(revenueCtx, {
+
+        type: 'bar',
+
+        data: {
+
+            labels: ['2026', '2027', '2028', '2029', '2030'],
+
+            datasets: [
+
+                {
+
+                    label: 'Revenue (Rp Miliar)',
+
+                    data: [225, 558, 1056, 1575, 2146],
+
+                    backgroundColor: 'rgba(235, 191, 108, 0.7)',
+
+                    borderColor: 'rgba(235, 191, 108, 1)',
+
+                    borderWidth: 2,
+
+                    yAxisID: 'y'
+
+                },
+
+                {
+
+                    label: 'Jamaah',
+
+                    data: [7500, 18000, 32000, 45000, 58000],
+
+                    backgroundColor: 'rgba(200, 150, 80, 0.7)',
+
+                    borderColor: 'rgba(200, 150, 80, 1)',
+
+                    borderWidth: 2,
+
+                    yAxisID: 'y1'
+
+                }
+
+            ]
+
+        },
+
+        options: {
+
+            responsive: true,
+
+            maintainAspectRatio: false,
+
+            interaction: {
+
+                mode: 'index',
+
+                intersect: false,
+
+            },
+
+            plugins: {
+
+                legend: {
+
+                    labels: {
+
+                        color: '#f1f5f9',
+
+                        font: {
+
+                            size: 14
+
+                        }
+
+                    }
+
+                },
+
+                title: {
+
+                    display: true,
+
+                    text: 'Revenue & Customer Growth Trajectory',
+
+                    color: '#ebbf6c',
+
+                    font: {
+
+                        size: 16,
+
+                        weight: 'bold'
+
+                    }
+
+                }
+
+            },
+
+            scales: {
+
+                x: {
+
+                    ticks: {
+
+                        color: '#94a3b8'
+
+                    },
+
+                    grid: {
+
+                        color: 'rgba(235, 191, 108, 0.1)'
+
+                    }
+
+                },
+
+                y: {
+
+                    type: 'linear',
+
+                    display: true,
+
+                    position: 'left',
+
+                    ticks: {
+
+                        color: '#94a3b8',
+
+                        callback: function(value) {
+
+                            return 'Rp' + value + 'M';
+
+                        }
+
+                    },
+
+                    grid: {
+
+                        color: 'rgba(235, 191, 108, 0.1)'
+
+                    },
+
+                    title: {
+
+                        display: true,
+
+                        text: 'Revenue (Miliar Rupiah)',
+
+                        color: '#ebbf6c'
+
+                    }
+
+                },
+
+                y1: {
+
+                    type: 'linear',
+
+                    display: true,
+
+                    position: 'right',
+
+                    ticks: {
+
+                        color: '#94a3b8',
+
+                        callback: function(value) {
+
+                            return value.toLocaleString();
+
+                        }
+
+                    },
+
+                    grid: {
+
+                        drawOnChartArea: false,
+
+                    },
+
+                    title: {
+
+                        display: true,
+
+                        text: 'Jumlah Jamaah',
+
+                        color: '#ebbf6c'
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    });
+
+}
+
+
+
+// Market Share Growth Chart
+
+const marketShareCtx = document.getElementById('marketShareChart');
+
+if (marketShareCtx) {
+
+    new Chart(marketShareCtx, {
+
+        type: 'line',
+
+        data: {
+
+            labels: ['Year 1 (2026)', 'Year 2 (2027)', 'Year 3 (2028)', 'Year 4 (2029)', 'Year 5 (2030)'],
+
+            datasets: [{
+
+                label: 'Market Share (%)',
+
+                data: [0.5, 1.0, 1.9, 2.3, 2.7],
+
+                backgroundColor: 'rgba(235, 191, 108, 0.2)',
+
+                borderColor: 'rgba(235, 191, 108, 1)',
+
+                borderWidth: 3,
+
+                fill: true,
+
+                tension: 0.4,
+
+                pointRadius: 6,
+
+                pointBackgroundColor: 'rgba(235, 191, 108, 1)',
+
+                pointBorderColor: '#fff',
+
+                pointBorderWidth: 2,
+
+                pointHoverRadius: 8
+
+            }]
+
+        },
+
+        options: {
+
+            responsive: true,
+
+            maintainAspectRatio: false,
+
+            plugins: {
+
+                legend: {
+
+                    labels: {
+
+                        color: '#f1f5f9',
+
+                        font: {
+
+                            size: 14
+
+                        }
+
+                    }
+
+                },
+
+                title: {
+
+                    display: true,
+
+                    text: 'Market Share Growth Path to Top 5',
+
+                    color: '#ebbf6c',
+
+                    font: {
+
+                        size: 16,
+
+                        weight: 'bold'
+
+                    }
+
+                }
+
+            },
+
+            scales: {
+
+                x: {
+
+                    ticks: {
+
+                        color: '#94a3b8'
+
+                    },
+
+                    grid: {
+
+                        color: 'rgba(235, 191, 108, 0.1)'
+
+                    }
+
+                },
+
+                y: {
+
+                    ticks: {
+
+                        color: '#94a3b8',
+
+                        callback: function(value) {
+
+                            return value + '%';
+
+                        }
+
+                    },
+
+                    grid: {
+
+                        color: 'rgba(235, 191, 108, 0.1)'
+
+                    },
+
+                    title: {
+
+                        display: true,
+
+                        text: 'Market Share (%)',
+
+                        color: '#ebbf6c'
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    });
+
+}
+
+
+
+// Digital Budget Allocation Chart
+
+const digitalBudgetCtx = document.getElementById('digitalBudgetChart');
+
+if (digitalBudgetCtx) {
+
+    new Chart(digitalBudgetCtx, {
+
+        type: 'doughnut',
+
+        data: {
+
+            labels: ['Google Ads', 'Facebook/Instagram', 'YouTube', 'Influencer', 'Content'],
+
+            datasets: [{
+
+                data: [40, 35, 10, 10, 5],
+
+                backgroundColor: [
+
+                    'rgba(235, 191, 108, 0.8)',
+
+                    'rgba(200, 150, 80, 0.8)',
+
+                    'rgba(180, 140, 70, 0.8)',
+
+                    'rgba(220, 170, 100, 0.8)',
+
+                    'rgba(240, 200, 120, 0.8)'
+
+                ],
+
+                borderColor: [
+
+                    'rgba(235, 191, 108, 1)',
+
+                    'rgba(200, 150, 80, 1)',
+
+                    'rgba(180, 140, 70, 1)',
+
+                    'rgba(220, 170, 100, 1)',
+
+                    'rgba(240, 200, 120, 1)'
+
+                ],
+
+                borderWidth: 2
+
+            }]
+
+        },
+
+        options: {
+
+            responsive: true,
+
+            maintainAspectRatio: false,
+
+            plugins: {
+
+                legend: {
+
+                    position: 'bottom',
+
+                    labels: {
+
+                        color: '#f1f5f9',
+
+                        font: {
+
+                            size: 13
+
+                        },
+
+                        padding: 15
+
+                    }
+
+                },
+
+                title: {
+
+                    display: true,
+
+                    text: 'Digital Channel Budget Split',
+
+                    color: '#ebbf6c',
+
+                    font: {
+
+                        size: 16,
+
+                        weight: 'bold'
+
+                    }
+
+                },
+
+                tooltip: {
+
+                    callbacks: {
+
+                        label: function(context) {
+
+                            return context.label + ': ' + context.parsed + '%';
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    });
+
+}
+
+
+
+// Budget Allocation Pie Chart
+
+const budgetAllocationCtx = document.getElementById('budgetAllocationChart');
+
+if (budgetAllocationCtx) {
+
+    new Chart(budgetAllocationCtx, {
+
+        type: 'pie',
+
+        data: {
+
+            labels: ['Google', 'Facebook/IG', 'Influencer', 'Content', 'Events', 'PR'],
+
+            datasets: [{
+
+                data: [40, 35, 10, 8, 4, 3],
+
+                backgroundColor: [
+
+                    'rgba(235, 191, 108, 0.8)',
+
+                    'rgba(200, 150, 80, 0.8)',
+
+                    'rgba(180, 140, 70, 0.8)',
+
+                    'rgba(220, 170, 100, 0.8)',
+
+                    'rgba(240, 200, 120, 0.8)',
+
+                    'rgba(250, 210, 130, 0.8)'
+
+                ],
+
+                borderColor: [
+
+                    'rgba(235, 191, 108, 1)',
+
+                    'rgba(200, 150, 80, 1)',
+
+                    'rgba(180, 140, 70, 1)',
+
+                    'rgba(220, 170, 100, 1)',
+
+                    'rgba(240, 200, 120, 1)',
+
+                    'rgba(250, 210, 130, 1)'
+
+                ],
+
+                borderWidth: 2
+
+            }]
+
+        },
+
+        options: {
+
+            responsive: true,
+
+            maintainAspectRatio: false,
+
+            plugins: {
+
+                legend: {
+
+                    position: 'bottom',
+
+                    labels: {
+
+                        color: '#f1f5f9',
+
+                        font: {
+
+                            size: 12
+
+                        },
+
+                        padding: 10
+
+                    }
+
+                },
+
+                title: {
+
+                    display: true,
+
+                    text: 'Overall Marketing Budget Distribution',
+
+                    color: '#ebbf6c',
+
+                    font: {
+
+                        size: 14,
+
+                        weight: 'bold'
+
+                    }
+
+                },
+
+                tooltip: {
+
+                    callbacks: {
+
+                        label: function(context) {
+
+                            return context.label + ': ' + context.parsed + '%';
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    });
+
+}
+
+
+
+// Positioning Matrix Chart
+
+const positioningCtx = document.getElementById('positioningChart');
+
+if (positioningCtx) {
+
+    new Chart(positioningCtx, {
+
+        type: 'scatter',
+
+        data: {
+
+            datasets: [
+
+                {
+
+                    label: 'Rehlatours.id',
+
+                    data: [{x: 85, y: 85}],
+
+                    backgroundColor: 'rgba(235, 191, 108, 0.8)',
+
+                    borderColor: 'rgba(235, 191, 108, 1)',
+
+                    borderWidth: 3,
+
+                    pointRadius: 15,
+
+                    pointHoverRadius: 18
+
+                },
+
+                {
+
+                    label: 'Al Hijaz',
+
+                    data: [{x: 40, y: 70}],
+
+                    backgroundColor: 'rgba(148, 163, 184, 0.6)',
+
+                    borderColor: 'rgba(148, 163, 184, 1)',
+
+                    borderWidth: 2,
+
+                    pointRadius: 12,
+
+                    pointHoverRadius: 15
+
+                },
+
+                {
+
+                    label: 'Khazzanah',
+
+                    data: [{x: 35, y: 65}],
+
+                    backgroundColor: 'rgba(148, 163, 184, 0.6)',
+
+                    borderColor: 'rgba(148, 163, 184, 1)',
+
+                    borderWidth: 2,
+
+                    pointRadius: 12,
+
+                    pointHoverRadius: 15
+
+                },
+
+                {
+
+                    label: 'Multazam',
+
+                    data: [{x: 45, y: 60}],
+
+                    backgroundColor: 'rgba(148, 163, 184, 0.6)',
+
+                    borderColor: 'rgba(148, 163, 184, 1)',
+
+                    borderWidth: 2,
+
+                    pointRadius: 12,
+
+                    pointHoverRadius: 15
+
+                },
+
+                {
+
+                    label: 'Digital Startups',
+
+                    data: [{x: 75, y: 50}],
+
+                    backgroundColor: 'rgba(58, 5, 25, 0.6)',
+
+                    borderColor: 'rgba(58, 5, 25, 1)',
+
+                    borderWidth: 2,
+
+                    pointRadius: 10,
+
+                    pointHoverRadius: 13
+
+                }
+
+            ]
+
+        },
+
+        options: {
+
+            responsive: true,
+
+            maintainAspectRatio: false,
+
+            plugins: {
+
+                legend: {
+
+                    labels: {
+
+                        color: '#f1f5f9',
+
+                        font: {
+
+                            size: 13
+
+                        },
+
+                        usePointStyle: true
+
+                    }
+
+                },
+
+                title: {
+
+                    display: true,
+
+                    text: 'Competitive Positioning Matrix',
+
+                    color: '#ebbf6c',
+
+                    font: {
+
+                        size: 16,
+
+                        weight: 'bold'
+
+                    }
+
+                },
+
+                tooltip: {
+
+                    callbacks: {
+
+                        label: function(context) {
+
+                            return context.dataset.label + ': Digital Innovation ' + context.parsed.x + ', Experience Quality ' + context.parsed.y;
+
+                        }
+
+                    }
+
+                }
+
+            },
+
+            scales: {
+
+                x: {
+
+                    title: {
+
+                        display: true,
+
+                        text: 'Digital Innovation →',
+
+                        color: '#ebbf6c',
+
+                        font: {
+
+                            size: 14,
+
+                            weight: 'bold'
+
+                        }
+
+                    },
+
+                    min: 0,
+
+                    max: 100,
+
+                    ticks: {
+
+                        color: '#94a3b8',
+
+                        stepSize: 20
+
+                    },
+
+                    grid: {
+
+                        color: 'rgba(235, 191, 108, 0.1)'
+
+                    }
+
+                },
+
+                y: {
+
+                    title: {
+
+                        display: true,
+
+                        text: 'Experience Quality →',
+
+                        color: '#ebbf6c',
+
+                        font: {
+
+                            size: 14,
+
+                            weight: 'bold'
+
+                        }
+
+                    },
+
+                    min: 0,
+
+                    max: 100,
+
+                    ticks: {
+
+                        color: '#94a3b8',
+
+                        stepSize: 20
+
+                    },
+
+                    grid: {
+
+                        color: 'rgba(235, 191, 108, 0.1)'
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    });
+
+}
+
+
+
+// Smooth scroll for better presentation experience
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Common chart options for consistent styling
-    const commonOptions = {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-            legend: {
-                labels: {
-                    color: '#dcc5cb', // Text muted color
-                    font: {
-                        family: "'Segoe UI', sans-serif",
-                        size: 12
-                    }
-                }
-            }
-        },
-        scales: {
-            y: {
-                grid: {
-                    color: 'rgba(235, 191, 108, 0.1)' // Gold transparent
-                },
-                ticks: {
-                    color: '#dcc5cb'
-                }
-            },
-            x: {
-                grid: {
-                    color: 'rgba(235, 191, 108, 0.1)'
-                },
-                ticks: {
-                    color: '#dcc5cb'
-                }
-            }
-        }
-    };
 
-    // 1. Revenue Growth Chart
-    const revenueCtx = document.getElementById('revenueChart').getContext('2d');
-    new Chart(revenueCtx, {
-        type: 'line',
-        data: {
-            labels: ['2026', '2027', '2028', '2029', '2030'],
-            datasets: [{
-                label: 'Revenue (Miliar IDR)',
-                data: [225, 480, 950, 1500, 2146],
-                borderColor: '#ebbf6c', // Accent Gold
-                backgroundColor: 'rgba(235, 191, 108, 0.2)',
-                borderWidth: 3,
-                tension: 0.4,
-                fill: true,
-                pointBackgroundColor: '#3a0519', // Primary BG
-                pointBorderColor: '#ebbf6c',
-                pointBorderWidth: 2,
-                pointRadius: 6
-            }, {
-                label: 'Jamaah Count',
-                data: [25, 55, 110, 170, 240], // Scaled down for visualization
-                borderColor: '#f5d69e', // Light Gold
-                borderDash: [5, 5],
-                borderWidth: 2,
-                tension: 0.4,
-                fill: false,
-                yAxisID: 'y1'
-            }]
-        },
-        options: {
-            ...commonOptions,
-            scales: {
-                ...commonOptions.scales,
-                y1: {
-                    type: 'linear',
-                    display: true,
-                    position: 'right',
-                    grid: {
-                        drawOnChartArea: false,
-                    },
-                    ticks: {
-                        color: '#f5d69e'
-                    }
-                }
-            }
-        }
-    });
+    console.log('Rehlatours.id Presentation Loaded Successfully');
 
-    // 2. Market Share Chart
-    const marketShareCtx = document.getElementById('marketShareChart').getContext('2d');
-    new Chart(marketShareCtx, {
-        type: 'bar',
-        data: {
-            labels: ['2026', '2027', '2028', '2029', '2030'],
-            datasets: [{
-                label: 'Market Share (%)',
-                data: [0.5, 0.9, 1.4, 1.9, 2.7],
-                backgroundColor: '#ebbf6c',
-                borderRadius: 4
-            }]
-        },
-        options: commonOptions
-    });
+    console.log('Total Slides: 18');
 
-    // 3. Digital Marketing Budget Allocation
-    const digitalBudgetCtx = document.getElementById('digitalBudgetChart').getContext('2d');
-    new Chart(digitalBudgetCtx, {
-        type: 'doughnut',
-        data: {
-            labels: ['Google Ads', 'FB/IG Ads', 'Influencer', 'Content Prod', 'SEO/Tech'],
-            datasets: [{
-                data: [40, 35, 10, 10, 5],
-                backgroundColor: [
-                    '#ebbf6c', // Gold
-                    '#c49b50', // Dark Gold
-                    '#f5d69e', // Light Gold
-                    '#520925', // Lighter Maroon
-                    '#7a1a36'  // Medium Maroon
-                ],
-                borderColor: '#3a0519',
-                borderWidth: 2
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    position: 'right',
-                    labels: {
-                        color: '#dcc5cb',
-                        boxWidth: 15
-                    }
-                }
-            }
-        }
-    });
-
-    // 4. Budget Allocation Chart
-    const budgetAllocationCtx = document.getElementById('budgetAllocationChart').getContext('2d');
-    new Chart(budgetAllocationCtx, {
-        type: 'radar',
-        data: {
-            labels: ['Digital Ads', 'Brand Awareness', 'Tech Dev', 'Team/Ops', 'Offline Event'],
-            datasets: [{
-                label: 'Year 1 Allocation',
-                data: [70, 40, 60, 50, 30],
-                fill: true,
-                backgroundColor: 'rgba(235, 191, 108, 0.2)',
-                borderColor: '#ebbf6c',
-                pointBackgroundColor: '#ebbf6c',
-                pointBorderColor: '#fff',
-                pointHoverBackgroundColor: '#fff',
-                pointHoverBorderColor: '#ebbf6c'
-            }, {
-                label: 'Year 3 Allocation',
-                data: [60, 70, 40, 80, 50],
-                fill: true,
-                backgroundColor: 'rgba(82, 9, 37, 0.2)',
-                borderColor: '#520925',
-                pointBackgroundColor: '#520925',
-                pointBorderColor: '#fff',
-                pointHoverBackgroundColor: '#fff',
-                pointHoverBorderColor: '#520925'
-            }]
-        },
-        options: {
-            ...commonOptions,
-            scales: {
-                r: {
-                    angleLines: {
-                        color: 'rgba(235, 191, 108, 0.1)'
-                    },
-                    grid: {
-                        color: 'rgba(235, 191, 108, 0.1)'
-                    },
-                    pointLabels: {
-                        color: '#dcc5cb',
-                        font: {
-                            size: 11
-                        }
-                    },
-                    ticks: {
-                        backdropColor: 'transparent',
-                        color: 'transparent' // Hide scale numbers
-                    }
-                }
-            }
-        }
-    });
-
-    // 5. Positioning Matrix
-    const positioningCtx = document.getElementById('positioningChart').getContext('2d');
-    new Chart(positioningCtx, {
-        type: 'scatter',
-        data: {
-            datasets: [{
-                label: 'Rehlatours.id',
-                data: [{ x: 8.5, y: 9 }],
-                backgroundColor: '#ebbf6c', // Gold
-                borderColor: '#fff',
-                borderWidth: 2,
-                pointRadius: 12,
-                pointHoverRadius: 14
-            }, {
-                label: 'Traditional Competitors',
-                data: [
-                    { x: 3, y: 7 },
-                    { x: 4, y: 6 },
-                    { x: 2, y: 8 }
-                ],
-                backgroundColor: '#c49b50', // Dark Gold/Bronze
-                pointRadius: 8
-            }, {
-                label: 'Online Travel Agents (OTA)',
-                data: [
-                    { x: 8, y: 4 },
-                    { x: 9, y: 3 }
-                ],
-                backgroundColor: '#520925', // Maroon
-                pointRadius: 8
-            }]
-        },
-        options: {
-            ...commonOptions,
-            scales: {
-                x: {
-                    ...commonOptions.scales.x,
-                    title: {
-                        display: true,
-                        text: 'Digital Innovation Level',
-                        color: '#ebbf6c'
-                    },
-                    min: 0,
-                    max: 10
-                },
-                y: {
-                    ...commonOptions.scales.y,
-                    title: {
-                        display: true,
-                        text: 'Service Quality & Touch',
-                        color: '#ebbf6c'
-                    },
-                    min: 0,
-                    max: 10
-                }
-            },
-            plugins: {
-                ...commonOptions.plugins,
-                tooltip: {
-                    callbacks: {
-                        label: function(context) {
-                            return context.dataset.label;
-                        }
-                    }
-                }
-            }
-        }
-    });
 });
